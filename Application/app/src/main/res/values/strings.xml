@@ -1,3 +1,10 @@
 <resources>
+    // general
     <string name="app_name">ArchSites</string>
+    
+    // ArchSiteList
+    <string name="text_ArchSiteName">Name</string>
+    <string name="text_ArchSiteLocation">Location</string>
+    <string name="text_ArchSiteVisited">Visited</string>
+    <string name="description_ArchSiteImage">ArchSite Image</string>
 </resources>
