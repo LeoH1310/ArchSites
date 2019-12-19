@@ -1,5 +1,6 @@
 package com.kapk.archsites.views.archsitelist
 
+import com.google.firebase.auth.FirebaseAuth
 import com.kapk.archsites.models.ArchSiteModel
 import com.kapk.archsites.views.BasePresenter
 import com.kapk.archsites.views.BaseView
@@ -18,15 +19,25 @@ class ArchSiteListPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-    //fun doAddArchSite() {
-        //view?.navigateTo(VIEW.PLACEMARK)
-    //}
-
-    fun doEditArchSite(archSite: ArchSiteModel) {
-        //view?.navigateTo(VIEW.ARCHSITE, 0, "archSite_edit", archSite)
+    fun doAddArchSite() {
+        view?.navigateTo(VIEW.ARCHSITE)
     }
 
-    //fun doShowArchSitesMap() {
-        //view?.navigateTo(VIEW.MAPS)
-    //}
+    fun doShowSettings() {
+        //view?.navigateTo(VIEW.SETTINGS)
+    }
+
+    fun doEditArchSite(archSite: ArchSiteModel) {
+        view?.navigateTo(VIEW.ARCHSITE, 0, "archSite_edit", archSite)
+    }
+
+    fun doShowMap() {
+    //   view?.navigateTo(VIEW.MAPS)
+    }
+
+    fun doLogout() {
+        FirebaseAuth.getInstance().signOut()
+        app.archSites.clear()
+        view?.navigateTo(VIEW.LOGIN)
+    }
 }

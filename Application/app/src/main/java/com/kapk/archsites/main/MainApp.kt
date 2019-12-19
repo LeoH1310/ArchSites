@@ -4,7 +4,7 @@ import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import com.kapk.archsites.models.ArchSiteStore
-import com.kapk.archsites.room.ArchSiteStoreRoom
+import org.wit.placemark.models.firebase.ArchSiteFireStore
 
 class MainApp : Application(), AnkoLogger {
 
@@ -12,7 +12,7 @@ class MainApp : Application(), AnkoLogger {
 
     override fun onCreate() {
         super.onCreate()
-        archSites = ArchSiteStoreRoom(applicationContext)
+        archSites = ArchSiteFireStore(applicationContext)
         info("ArchSites started")
     }
 

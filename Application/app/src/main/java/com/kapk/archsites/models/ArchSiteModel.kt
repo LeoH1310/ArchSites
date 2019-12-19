@@ -8,9 +8,10 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity
-class ArchSiteModel(@PrimaryKey(autoGenerate = true) var id: Long = 0,
+data class ArchSiteModel(@PrimaryKey(autoGenerate = true) var id: Long = 0,
                     var fbId : String = "",
                     var name: String = "",
+                    var description: String = "",
                     var visited: Boolean = false,
                     var image: String = "",
                     @Embedded var location : Location = Location()): Parcelable

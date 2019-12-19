@@ -1,10 +1,30 @@
 <resources>
-    // general
+    <!-- General -->
     <string name="app_name">ArchSites</string>
+
+    <!-- SplashScreen -->
+    <string name="description_Logo">ArchSites Logo</string>
     
-    // ArchSiteList
+    <!-- ArchSiteList & ArchSite -->
+    <string name="title_ArchSite">ArchSite</string>
+    <string name="title_ArchSiteList">ArchSites</string>
     <string name="text_ArchSiteName">Name</string>
     <string name="text_ArchSiteLocation">Location</string>
     <string name="text_ArchSiteVisited">Visited</string>
+    <string name="text_ArchSiteDescription">Description</string>
     <string name="description_ArchSiteImage">ArchSite Image</string>
+
+    <!-- Login -->
+    <string name="title_Login">Login</string>
+
+    <!-- Menu -->
+    <string name="text_menu_item_add">Add ArchSite</string>
+    <string name="text_menu_item_map">Show Map</string>
+    <string name="text_menu_item_settings">Settings</string>
+    <string name="text_menu_item_logout">Logout</string>
+    <string name="text_menu_item_save">Save</string>
+    <string name="text_menu_item_delete">Delete</string>
+
+    <!-- Toasts -->
+    <string name="toast_enterName">Please enter a Name</string>
 </resources>
