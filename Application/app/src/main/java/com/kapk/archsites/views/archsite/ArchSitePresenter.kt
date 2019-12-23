@@ -1,8 +1,12 @@
 package com.kapk.archsites.views.archsite
 
+import android.content.Intent
+import com.kapk.archsites.helpers.showImagePicker
 import com.kapk.archsites.models.ArchSiteModel
 import com.kapk.archsites.views.BasePresenter
 import com.kapk.archsites.views.BaseView
+import com.kapk.archsites.views.IMAGE_REQUEST
+import com.kapk.archsites.views.LOCATION_REQUEST
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -52,6 +56,27 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
             app.archSites.delete(archSite)
             uiThread {
                 view?.finish()
+            }
+        }
+    }
+
+    fun doSelectImage() {
+        view?.let {
+            showImagePicker(view!!, IMAGE_REQUEST)
+        }
+    }
+
+    override fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        when (requestCode) {
+            IMAGE_REQUEST -> {
+                //TODO: entscheiden ob ändern oder hinzufügen
+                archSite.images[0] = (data.data.toString())
+                view?.setImageSlider(archSite)
+            }
+            LOCATION_REQUEST -> {
+                /*val location = data.extras?.getParcelable<Location>("location")!!
+                placemark.location = location
+                locationUpdate(location)*/
             }
         }
     }

@@ -39,7 +39,7 @@ class ArchSiteAdapter constructor(private var archSites: List<ArchSiteModel>,
         fun bind(archSite: ArchSiteModel, listener: ArchSiteListener) {
             itemView.txt_siteName.text = archSite.name
             itemView.check_visited.isChecked = archSite.visited
-            //Glide.with(itemView.context).load(archSite.image).into(itemView.siteImage);
+            Glide.with(itemView.context).load(archSite.images[0]).into(itemView.siteImage);
             itemView.setOnClickListener { listener.onArchSiteClick(archSite) }
         }
     }

@@ -63,8 +63,9 @@
         android:inputType="textPersonName"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/check_ArchSite_visited"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_addImage" />
 
     <EditText
         android:id="@+id/txt_ArchSite_Description"
@@ -75,7 +76,7 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="@string/text_ArchSiteDescription"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,14 +86,24 @@
         android:id="@+id/check_ArchSite_visited"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:switchPadding="10dp"
         android:text="@string/text_ArchSiteVisited"
         android:textAlignment="textStart"
-        app:layout_constraintBottom_toTopOf="@+id/txt_ArchSite_Description"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_ArchSite_Name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_ArchSite_Name" />
+
+    <Button
+        android:id="@+id/btn_addImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/text_btn_AddImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

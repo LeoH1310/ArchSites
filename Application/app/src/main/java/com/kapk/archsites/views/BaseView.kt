@@ -48,9 +48,21 @@ abstract class BaseView : AppCompatActivity(), AnkoLogger {
         supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data != null) {
+            basePresenter?.doActivityResult(requestCode, resultCode, data)
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        basePresenter?.doRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
     open fun showLocation(location : Location) {}
     open fun showArchSite(archSite: ArchSiteModel) {}
     open fun showArchSites(archSites: List<ArchSiteModel>) {}
     open fun showProgress() {}
     open fun hideProgress() {}
+    open fun setImageSlider(archSite: ArchSiteModel) {}
 }

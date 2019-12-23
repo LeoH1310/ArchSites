@@ -12,6 +12,7 @@
     <string name="text_ArchSiteLocation">Location</string>
     <string name="text_ArchSiteVisited">Visited</string>
     <string name="text_ArchSiteDescription">Description</string>
+    <string name="text_btn_AddImage">Add Image</string>
     <string name="description_ArchSiteImage">ArchSite Image</string>
 
     <!-- Login -->
@@ -27,4 +28,11 @@
 
     <!-- Toasts -->
     <string name="toast_enterName">Please enter a Name</string>
+
+    <!-- Image -->
+    <string name="text_select_image">Select ArchSite Image</string>
+
+    <!-- TESTING -->
+    <string name="txt_email">leohesse@hero.com</string>
+    <string name="txt_password">123456</string>
 </resources>

@@ -39,6 +39,7 @@ dependencies {
     implementation 'com.github.denzcoskun:ImageSlideshow:0.0.6'
     implementation 'com.google.firebase:firebase-auth:19.2.0'
     implementation 'com.google.firebase:firebase-database:19.2.0'
+    implementation 'com.google.firebase:firebase-storage:19.1.0'
     kapt 'androidx.room:room-compiler:2.2.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
