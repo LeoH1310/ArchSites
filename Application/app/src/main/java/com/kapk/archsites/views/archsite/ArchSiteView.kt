@@ -2,6 +2,7 @@ package com.kapk.archsites.views.archsite
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -28,6 +29,12 @@ class ArchSiteView : BaseView(), AnkoLogger {
         btn_addImage.setOnClickListener { presenter.doAddImage() }
 
         presenter = initPresenter (ArchSitePresenter(this)) as ArchSitePresenter
+
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync {
+            presenter.doConfigureMap(it)
+            it.setOnMapClickListener { presenter.doSetLocation() }
+        }
     }
 
     override fun showArchSite(archSite: ArchSiteModel) {
@@ -44,10 +51,7 @@ class ArchSiteView : BaseView(), AnkoLogger {
 
         btn_addImage.isEnabled = (imageCounter < 4)
 
-        //if (placemark.image != null) {
-            //chooseImage.setText(R.string.change_placemark_image)
-        //}
-        //this.showLocation(placemark.location)
+        this.showLocation(archSite.location)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -122,5 +126,42 @@ class ArchSiteView : BaseView(), AnkoLogger {
                 }
             }
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (data != null) {
+            presenter.doActivityResult(requestCode, resultCode, data)
+        }
+    }
+
+    override fun onBackPressed() {
+        presenter.doCancel()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+        presenter.doRestartLocationUpdate()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mapView.onSaveInstanceState(outState)
     }
 }

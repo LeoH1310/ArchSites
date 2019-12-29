@@ -19,6 +19,10 @@
     <!-- Login -->
     <string name="title_Login">Login</string>
 
+    <!-- Edit Location -->
+    <string name="title_EditLocation">Edit Location</string>
+    <string name="text_lat_lng_default">00.000000</string>
+
     <!-- Menu -->
     <string name="text_menu_item_add">Add ArchSite</string>
     <string name="text_menu_item_map">Show Map</string>
@@ -39,4 +43,5 @@
     <!-- TESTING -->
     <string name="txt_email">leohesse@hero.com</string>
     <string name="txt_password">123456</string>
+    <string name="google_maps_key">AIzaSyApSayw54m4RSHyiW0FK33AGOG7vmX7nUs</string>
 </resources>

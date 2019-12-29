@@ -1,8 +1,21 @@
 package com.kapk.archsites.views.archsite
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.kapk.archsites.helpers.checkLocationPermissions
+import com.kapk.archsites.helpers.createDefaultLocationRequest
+import com.kapk.archsites.helpers.isPermissionGranted
 import com.kapk.archsites.helpers.showImagePicker
 import com.kapk.archsites.models.ArchSiteModel
+import com.kapk.archsites.models.Location
 import com.kapk.archsites.views.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -11,12 +24,14 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
 
     var archSite = ArchSiteModel()
     var edit = false
-    var imageHolder = ""
+    var locManualChanged = false
 
-    //var map: GoogleMap? = null
-    //var defaultLocation = Location(52.245696, -7.139102, 15f)
-    //var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
-    //val locationRequest = createDefaultLocationRequest()
+    var map: GoogleMap? = null
+    var defaultLocation = Location(52.245696, -7.139102, 15f)
+    var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
+    val locationRequest = createDefaultLocationRequest()
+
+    lateinit var locationCallback: LocationCallback
 
     init {
         if (view.intent.hasExtra("archSite_edit")) {
@@ -24,10 +39,59 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
             archSite = view.intent.extras?.getParcelable<ArchSiteModel>("archSite_edit")!!
             view.showArchSite(archSite)
         } else {
-            //if (checkLocationPermissions(view)) {
-                //doSetCurrentLocation()
-            //}
+            if (checkLocationPermissions(view)) {
+                doSetCurrentLocation()
+            }
         }
+    }
+
+    @SuppressLint("MissingPermission")
+    fun doSetCurrentLocation() {
+        locationService.lastLocation.addOnSuccessListener {
+            locationUpdate(Location(it.latitude, it.longitude))
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    fun doRestartLocationUpdate() {
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                if (locationResult != null && locationResult.locations != null) {
+                    val l = locationResult.locations.last()
+                    locationUpdate(Location(l.latitude, l.longitude))
+                }
+            }
+        }
+        if (!edit and !locManualChanged) {
+            locationService.requestLocationUpdates(locationRequest, locationCallback, null)
+        }
+    }
+
+    override fun doRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        if (isPermissionGranted(requestCode, grantResults)) {
+            doSetCurrentLocation()
+        } else {
+            locationUpdate(defaultLocation)
+        }
+    }
+
+    fun doConfigureMap(m: GoogleMap) {
+        map = m
+        locationUpdate(archSite.location)
+    }
+
+    fun locationUpdate(location: Location) {
+        archSite.location = location
+        archSite.location.zoom = 15f
+        map?.clear()
+        val options = MarkerOptions().title(archSite.name).position(LatLng(archSite.location.lat, archSite.location.lng))
+        map?.addMarker(options)
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(archSite.location.lat, archSite.location.lng), archSite.location.zoom))
+        view?.showLocation(archSite.location)
+    }
+
+    fun doSetLocation() {
+        view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(archSite.location.lat, archSite.location.lng, archSite.location.zoom))
     }
 
     fun doAddOrSave(title: String, description: String, visited: Boolean) {
@@ -92,9 +156,11 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
                 view?.showArchSite(archSite)
             }
             LOCATION_REQUEST -> {
-                /*val location = data.extras?.getParcelable<Location>("location")!!
-                placemark.location = location
-                locationUpdate(location)*/
+                val location = data.extras?.getParcelable<Location>("location")!!
+                locationService.removeLocationUpdates(locationCallback)
+                locManualChanged = true
+                archSite.location = location
+                locationUpdate(location)
             }
             else ->{
                 //change image at one position in the list
