@@ -1,11 +1,7 @@
-package org.wit.placemark.models.firebase
-
-//import com.google.firebase.storage.FirebaseStorage
-//import com.google.firebase.storage.StorageReference
+package com.kapk.archsites.models.firebase
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
@@ -16,7 +12,6 @@ import com.kapk.archsites.models.ArchSiteStore
 import org.jetbrains.anko.AnkoLogger
 import java.io.ByteArrayOutputStream
 import java.io.File
-
 
 class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
 
@@ -61,14 +56,14 @@ class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
 
     override fun delete(archSite: ArchSiteModel) {
 
-            archSite.images.forEach {
-                if (it != "") {
-                    val imageRef = FirebaseStorage.getInstance().getReferenceFromUrl(it)
-                    imageRef.delete().addOnFailureListener {
-                        println(it.message)
-                    }
+        archSite.images.forEach {
+            if (it != "") {
+                val imageRef = FirebaseStorage.getInstance().getReferenceFromUrl(it)
+                imageRef.delete().addOnFailureListener {
+                    println(it.message)
                 }
             }
+        }
         db.child("users").child(userId).child("archSites").child(archSite.fbId).removeValue()
         archSites.remove(archSite)
     }
@@ -77,7 +72,7 @@ class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
         archSites.clear()
     }
 
-    fun updateImages(archSite: ArchSiteModel) {
+    private fun updateImages(archSite: ArchSiteModel) {
 
         for (x in 0 until archSite.images.size) {
             var curImageStr = archSite.images[x]
@@ -111,7 +106,7 @@ class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
             override fun onCancelled(dataSnapshot: DatabaseError) {
             }
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                dataSnapshot!!.children.mapNotNullTo(archSites) { it.getValue<ArchSiteModel>(ArchSiteModel::class.java) }
+                dataSnapshot.children.mapNotNullTo(archSites) { it.getValue<ArchSiteModel>(ArchSiteModel::class.java) }
                 archSitesReady()
             }
         }

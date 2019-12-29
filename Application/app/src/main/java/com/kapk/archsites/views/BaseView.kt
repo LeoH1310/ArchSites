@@ -11,8 +11,9 @@ import com.kapk.archsites.views.archsitelist.ArchSiteListView
 import com.kapk.archsites.views.login.LoginView
 import org.jetbrains.anko.AnkoLogger
 
-val IMAGE_REQUEST = 1
+val ADD_IMAGE_REQUEST = 1
 val LOCATION_REQUEST = 2
+val CHANGE_IMAGE_REQUEST = 3
 
 enum class VIEW {
     LOCATION, ARCHSITE, LIST, LOGIN, SETTINGS

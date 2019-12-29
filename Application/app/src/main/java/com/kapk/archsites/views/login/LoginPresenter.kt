@@ -4,8 +4,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.kapk.archsites.views.BasePresenter
 import com.kapk.archsites.views.BaseView
 import com.kapk.archsites.views.VIEW
+import com.kapk.archsites.models.firebase.ArchSiteFireStore
 import org.jetbrains.anko.toast
-import org.wit.placemark.models.firebase.ArchSiteFireStore
 
 class LoginPresenter(view: BaseView) : BasePresenter(view) {
 

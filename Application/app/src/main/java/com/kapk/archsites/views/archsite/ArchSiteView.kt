@@ -1,10 +1,13 @@
 package com.kapk.archsites.views.archsite
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.bumptech.glide.Glide
+import android.widget.Toast
 import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.kapk.archsites.R
 import com.kapk.archsites.models.ArchSiteModel
@@ -22,7 +25,7 @@ class ArchSiteView : BaseView(), AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_archsite)
         init(toolbar, true)
-        btn_addImage.setOnClickListener { presenter.doSelectImage() }
+        btn_addImage.setOnClickListener { presenter.doAddImage() }
 
         presenter = initPresenter (ArchSitePresenter(this)) as ArchSitePresenter
     }
@@ -32,6 +35,14 @@ class ArchSiteView : BaseView(), AnkoLogger {
         txt_ArchSite_Description.setText(archSite.description)
         check_ArchSite_visited.isChecked = archSite.visited
         setImageSlider(archSite)
+
+        var imageCounter = 0
+        for (x in 0 until 4) {
+            if (archSite.images[x] != "")
+                imageCounter++
+        }
+
+        btn_addImage.isEnabled = (imageCounter < 4)
 
         //if (placemark.image != null) {
             //chooseImage.setText(R.string.change_placemark_image)
@@ -88,5 +99,28 @@ class ArchSiteView : BaseView(), AnkoLogger {
         val imageSlider = findViewById<ImageSlider>(R.id.image_slider)
         imageSlider.setImageList(imageList)
         imageSlider.stopSliding()
+        imageSlider.startSliding(5000)
+        imageSlider.setItemClickListener(object : ItemClickListener {
+            override fun onItemSelected(position: Int) {
+                val alertDialogBuilder = AlertDialog.Builder(this@ArchSiteView)
+
+                with(alertDialogBuilder){
+                    setTitle("Change or Delete")
+                    setMessage("Would you like to delete or replace the image?")
+                    setPositiveButton(R.string.txt_btn_change) { _, _ ->
+                        presenter.doChangeImage(position)
+                    }
+
+                    setNegativeButton(R.string.txt_btn_delete) { _, _ ->
+                        presenter.doDeleteImage(position)
+                    }
+
+                    setNeutralButton(R.string.txt_btn_cancel) { _, _ ->
+                    }
+
+                    show()
+                }
+            }
+        })
     }
 }

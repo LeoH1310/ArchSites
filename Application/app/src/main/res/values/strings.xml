@@ -14,6 +14,7 @@
     <string name="text_ArchSiteDescription">Description</string>
     <string name="text_btn_AddImage">Add Image</string>
     <string name="description_ArchSiteImage">ArchSite Image</string>
+    <string name="toast_max_images">Only 4 images possible</string>
 
     <!-- Login -->
     <string name="title_Login">Login</string>
@@ -31,6 +32,9 @@
 
     <!-- Image -->
     <string name="text_select_image">Select ArchSite Image</string>
+    <string name="txt_btn_change">Replace</string>
+    <string name="txt_btn_delete">Delete</string>
+    <string name="txt_btn_cancel">Cancel</string>
 
     <!-- TESTING -->
     <string name="txt_email">leohesse@hero.com</string>

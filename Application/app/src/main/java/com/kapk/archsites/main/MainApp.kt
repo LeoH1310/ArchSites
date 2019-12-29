@@ -4,7 +4,7 @@ import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import com.kapk.archsites.models.ArchSiteStore
-import org.wit.placemark.models.firebase.ArchSiteFireStore
+import com.kapk.archsites.models.firebase.ArchSiteFireStore
 
 class MainApp : Application(), AnkoLogger {
 
