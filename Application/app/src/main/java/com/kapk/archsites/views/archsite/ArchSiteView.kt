@@ -11,6 +11,7 @@ import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.kapk.archsites.R
+import com.kapk.archsites.helpers.checkLocationPermissions
 import com.kapk.archsites.models.ArchSiteModel
 import com.kapk.archsites.views.BaseView
 import kotlinx.android.synthetic.main.activity_archsite.*
@@ -33,7 +34,9 @@ class ArchSiteView : BaseView(), AnkoLogger {
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync {
             presenter.doConfigureMap(it)
-            it.setOnMapClickListener { presenter.doSetLocation() }
+            it.setOnMapClickListener {
+                if (checkLocationPermissions(this))
+                    presenter.doSetLocation() }
         }
     }
 

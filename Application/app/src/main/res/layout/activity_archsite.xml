@@ -64,18 +64,35 @@
 
             </androidx.cardview.widget.CardView>
 
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/mapView"
+            <Button
+                android:id="@+id/btn_addImage"
                 android:layout_width="0dp"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/text_btn_AddImage"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_ArchSite_Description" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView">
+                <requestFocus /></Button>
+
+            <EditText
+                android:id="@+id/txt_ArchSite_Name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:hint="@string/text_ArchSiteName"
+                android:inputType="textPersonName"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/check_ArchSite_visited"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_addImage" />
 
             <Switch
                 android:id="@+id/check_ArchSite_visited"
@@ -104,32 +121,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_ArchSite_Name" />
 
-            <Button
-                android:id="@+id/btn_addImage"
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/text_btn_AddImage"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_ArchSite_Description" />
 
-            <EditText
-                android:id="@+id/txt_ArchSite_Name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:ems="10"
-                android:hint="@string/text_ArchSiteName"
-                android:inputType="textPersonName"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/check_ArchSite_visited"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_addImage" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

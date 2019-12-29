@@ -39,9 +39,8 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
             archSite = view.intent.extras?.getParcelable<ArchSiteModel>("archSite_edit")!!
             view.showArchSite(archSite)
         } else {
-            if (checkLocationPermissions(view)) {
+            if (checkLocationPermissions(view))
                 doSetCurrentLocation()
-            }
         }
     }
 
