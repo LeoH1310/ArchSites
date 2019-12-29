@@ -24,7 +24,7 @@ class ArchSiteListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doShowSettings() {
-        //view?.navigateTo(VIEW.SETTINGS)
+        view?.navigateTo(VIEW.SETTINGS)
     }
 
     fun doEditArchSite(archSite: ArchSiteModel) {

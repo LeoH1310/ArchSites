@@ -9,6 +9,7 @@ import com.kapk.archsites.models.Location
 import com.kapk.archsites.views.archsite.ArchSiteView
 import com.kapk.archsites.views.archsitelist.ArchSiteListView
 import com.kapk.archsites.views.login.LoginView
+import com.kapk.archsites.views.settings.SettingsView
 import org.jetbrains.anko.AnkoLogger
 
 val ADD_IMAGE_REQUEST = 1
@@ -31,6 +32,7 @@ abstract class BaseView : AppCompatActivity(), AnkoLogger {
             //VIEW.MAPS -> intent = Intent(this, PlacemarkMapView::class.java)
             VIEW.LIST -> intent = Intent(this, ArchSiteListView::class.java)
             VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
+            VIEW.SETTINGS -> intent = Intent(this, SettingsView::class.java)
         }
         if (key != "") {
             intent.putExtra(key, value)
