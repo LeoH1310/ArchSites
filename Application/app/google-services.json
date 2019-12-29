@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "848112561685",
+    "firebase_url": "https://archsites-f8080.firebaseio.com",
+    "project_id": "archsites-f8080",
+    "storage_bucket": "archsites-f8080.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848112561685:android:a2d38e44b420a0eed7681c",
+        "android_client_info": {
+          "package_name": "com.kapk.archsites"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848112561685-766cqgoerhakjg6960ln0mv605rses8n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kapk.archsites",
+            "certificate_hash": "152ec95b23b6931da5a83985accddd09ad5016fc"
+          }
+        },
+        {
+          "client_id": "848112561685-0b6b9bi71t26f2ia4c96p7h8dpnmciq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz2pEx_rBeT0LlFnnij9v3tv-GComlgdI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848112561685-0b6b9bi71t26f2ia4c96p7h8dpnmciq6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
