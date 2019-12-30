@@ -12,8 +12,11 @@ data class ArchSiteModel(@PrimaryKey(autoGenerate = true) var id: Long = 0,
                          var fbId : String = "",
                          var name: String = "",
                          var description: String = "",
+                         var notes: String = "",
+                         var favorite: Boolean = false,
                          var visited: Boolean = false,
-                         var images: MutableList<String> = MutableList(4, { i -> "" }),
+                         var dateVisited: String = "00.00.0000",
+                         var images: MutableList<String> = MutableList(4) { "" },
                          @Embedded var location : Location = Location()): Parcelable
 
 @Parcelize

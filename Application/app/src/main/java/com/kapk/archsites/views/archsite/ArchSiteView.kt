@@ -1,12 +1,10 @@
 package com.kapk.archsites.views.archsite
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
@@ -15,9 +13,15 @@ import com.kapk.archsites.helpers.checkLocationPermissions
 import com.kapk.archsites.models.ArchSiteModel
 import com.kapk.archsites.views.BaseView
 import kotlinx.android.synthetic.main.activity_archsite.*
-import kotlinx.android.synthetic.main.activity_archsite.toolbar
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
+import java.text.DateFormat
+import java.text.DateFormat.getDateInstance
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.Calendar.SHORT
+import kotlin.collections.ArrayList
+
 
 class ArchSiteView : BaseView(), AnkoLogger {
 
@@ -38,12 +42,24 @@ class ArchSiteView : BaseView(), AnkoLogger {
                 if (checkLocationPermissions(this))
                     presenter.doSetLocation() }
         }
+
+        check_ArchSite_visited.setOnClickListener {
+            if (check_ArchSite_visited.isChecked) {
+                val dateVisited = "Visited\n" + getDateInstance().format(Date())
+                txt_dateVisited.setText(dateVisited)
+            }
+            else
+                txt_dateVisited.setText("Visited")
+        }
     }
 
     override fun showArchSite(archSite: ArchSiteModel) {
         txt_ArchSite_Name.setText(archSite.name)
         txt_ArchSite_Description.setText(archSite.description)
         check_ArchSite_visited.isChecked = archSite.visited
+        txt_dateVisited.setText(archSite.dateVisited)
+        txt_ArchSite_Notes.setText(archSite.notes)
+        btn_favorite.isChecked = archSite.favorite
         setImageSlider(archSite)
 
         var imageCounter = 0
@@ -71,7 +87,8 @@ class ArchSiteView : BaseView(), AnkoLogger {
                 if (txt_ArchSite_Name.text.toString().isEmpty()) {
                     toast(R.string.toast_enterName)
                 } else {
-                    presenter.doAddOrSave(txt_ArchSite_Name.text.toString(), txt_ArchSite_Description.text.toString(), check_ArchSite_visited.isChecked)
+                    presenter.doAddOrSave(txt_ArchSite_Name.text.toString(), txt_ArchSite_Description.text.toString(), check_ArchSite_visited.isChecked,
+                        txt_dateVisited.text.toString(), btn_favorite.isChecked, txt_ArchSite_Notes.text.toString())
                 }
             }
         }

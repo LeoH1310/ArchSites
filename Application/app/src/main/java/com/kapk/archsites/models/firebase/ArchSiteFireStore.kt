@@ -45,9 +45,12 @@ class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
         if (foundArchSite != null) {
             foundArchSite.name = archSite.name
             foundArchSite.description = archSite.description
+            foundArchSite.dateVisited = archSite.dateVisited
             foundArchSite.visited = archSite.visited
+            foundArchSite.favorite = archSite.favorite
             foundArchSite.images = archSite.images
-            //foundArchSite.location = placemark.location
+            foundArchSite.location = archSite.location
+            foundArchSite.notes = archSite.notes
         }
 
         db.child("users").child(userId).child("archSites").child(archSite.fbId).setValue(archSite)

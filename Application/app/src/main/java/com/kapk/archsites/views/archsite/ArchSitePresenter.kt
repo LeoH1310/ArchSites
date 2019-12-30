@@ -93,10 +93,13 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
         view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(archSite.location.lat, archSite.location.lng, archSite.location.zoom))
     }
 
-    fun doAddOrSave(title: String, description: String, visited: Boolean) {
+    fun doAddOrSave(title: String, description: String, visited: Boolean, dateVisited: String, favorite: Boolean, notes: String) {
         archSite.name = title
         archSite.description = description
         archSite.visited = visited
+        archSite.dateVisited = dateVisited
+        archSite.favorite = favorite
+        archSite.notes = notes
         doAsync {
             if (edit) {
                 app.archSites.update(archSite)
