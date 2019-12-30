@@ -42,6 +42,7 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
         } else {
             if (checkLocationPermissions(view))
                 doSetCurrentLocation()
+            view.setImageSlider(archSite)
         }
     }
 
@@ -145,11 +146,11 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-    fun doDeleteImage(pos:Int){
-        archSite.images[pos] = ""
+    fun doDeleteImage(pos: Int){
         for (x in pos until archSite.images.size - 1){
-            archSite.images[pos] = archSite.images[pos+1]
+            archSite.images[x] = archSite.images[x+1]
         }
+        archSite.images[archSite.images.size - 1] = ""
         view?.showArchSite(archSite)
     }
 

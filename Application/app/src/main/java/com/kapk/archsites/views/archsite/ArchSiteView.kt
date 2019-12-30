@@ -1,7 +1,6 @@
 package com.kapk.archsites.views.archsite
 
 import android.app.AlertDialog
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -15,13 +14,9 @@ import com.kapk.archsites.views.BaseView
 import kotlinx.android.synthetic.main.activity_archsite.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
-import java.text.DateFormat
 import java.text.DateFormat.getDateInstance
-import java.text.SimpleDateFormat
 import java.util.*
-import java.util.Calendar.SHORT
 import kotlin.collections.ArrayList
-
 
 class ArchSiteView : BaseView(), AnkoLogger {
 
@@ -108,7 +103,7 @@ class ArchSiteView : BaseView(), AnkoLogger {
         if (archSite.images[0] == ""){
             imageList.add(
                 SlideModel(
-                    R.mipmap.ic_launcher,true
+                    R.drawable.add_new_image,true
                 )
             )
         }
@@ -150,13 +145,6 @@ class ArchSiteView : BaseView(), AnkoLogger {
                 }
             }
         })
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (data != null) {
-            presenter.doActivityResult(requestCode, resultCode, data)
-        }
     }
 
     override fun onBackPressed() {
