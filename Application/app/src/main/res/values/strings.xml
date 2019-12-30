@@ -1,3 +1,59 @@
 <resources>
+    <!-- General -->
     <string name="app_name">ArchSites</string>
+
+    <!-- SplashScreen -->
+    <string name="description_Logo">ArchSites Logo</string>
+    
+    <!-- ArchSiteList & ArchSite -->
+    <string name="title_ArchSite">ArchSite</string>
+    <string name="title_ArchSiteList">ArchSites</string>
+    <string name="text_ArchSiteName">Name</string>
+    <string name="text_ArchSiteLocation">Location</string>
+    <string name="text_ArchSiteVisited">Visited</string>
+    <string name="text_ArchSiteDescription">Description</string>
+    <string name="text_ArchSiteNotes">Notes</string>
+    <string name="text_btn_AddImage">Add Image</string>
+    <string name="description_ArchSiteImage">ArchSite Image</string>
+    <string name="toast_max_images">Only 4 images possible</string>
+
+    <!-- Login -->
+    <string name="title_Login">Login</string>
+
+    <!-- Settings -->
+    <string name="title_Settings">Settings</string>
+    <string name="text_Account">Account</string>
+    <string name="text_eMail">E-mail address</string>
+    <string name="text_btn_save_eMail">Save E-mail address</string>
+    <string name="text_password">Password</string>
+    <string name="text_btn_save_password">Save password</string>
+    <string name="text_Statistics">Statistics</string>
+    <string name="text_sitesCounter">Total number of Sites:</string>
+    <string name="text_sitesVisitedCounter">Total visited Sites:</string>
+
+    <!-- Edit Location -->
+    <string name="title_EditLocation">Edit Location</string>
+    <string name="text_lat_lng_default">00.000000</string>
+
+    <!-- Menu -->
+    <string name="text_menu_item_add">Add Custom Site</string>
+    <string name="text_menu_item_map">Show Map</string>
+    <string name="text_menu_item_settings">Settings</string>
+    <string name="text_menu_item_logout">Logout</string>
+    <string name="text_menu_item_save">Save</string>
+    <string name="text_menu_item_delete">Delete</string>
+
+    <!-- Toasts -->
+    <string name="toast_enterName">Please enter a Name</string>
+
+    <!-- Image -->
+    <string name="text_select_image">Select ArchSite Image</string>
+    <string name="txt_btn_change">Replace</string>
+    <string name="txt_btn_delete">Delete</string>
+    <string name="txt_btn_cancel">Cancel</string>
+
+    <!-- TESTING -->
+    <string name="txt_email">leohesse@hero.com</string>
+    <string name="txt_password">123456</string>
+    <string name="google_maps_key">AIzaSyApSayw54m4RSHyiW0FK33AGOG7vmX7nUs</string>
 </resources>
