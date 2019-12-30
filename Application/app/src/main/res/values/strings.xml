@@ -19,6 +19,17 @@
     <!-- Login -->
     <string name="title_Login">Login</string>
 
+    <!-- Settings -->
+    <string name="title_Settings">Settings</string>
+    <string name="text_Account">Account</string>
+    <string name="text_eMail">E-mail address</string>
+    <string name="text_btn_save_eMail">Save E-mail address</string>
+    <string name="text_password">Password</string>
+    <string name="text_btn_save_password">Save password</string>
+    <string name="text_Statistics">Statistics</string>
+    <string name="text_sitesCounter">Total number of Sites:</string>
+    <string name="text_sitesVisitedCounter">Total visited Sites:</string>
+
     <!-- Edit Location -->
     <string name="title_EditLocation">Edit Location</string>
     <string name="text_lat_lng_default">00.000000</string>

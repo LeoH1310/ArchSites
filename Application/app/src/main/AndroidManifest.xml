@@ -40,7 +40,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.archsitelist.ArchSiteListView" />
         </activity>
-
+      
+        <activity android:name=".views.settings.SettingsView"
+            android:label="@string/title_Settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.archsitelist.ArchSiteListView" />
+        </activity>
+  
         <activity android:name=".views.editlocation.EditLocationView"
             android:label="@string/title_EditLocation"
             android:parentActivityName=".views.archsite.ArchSiteView">

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".views.archsite.ArchSiteView">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="0dp"
