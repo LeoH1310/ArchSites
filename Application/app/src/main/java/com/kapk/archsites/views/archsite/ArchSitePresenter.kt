@@ -18,6 +18,7 @@ import com.kapk.archsites.models.ArchSiteModel
 import com.kapk.archsites.models.Location
 import com.kapk.archsites.views.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 
 class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
@@ -90,8 +91,11 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doSetLocation() {
-        view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(archSite.location.lat, archSite.location.lng, archSite.location.zoom))
-    }
+        if(archSite.editable)
+            view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(archSite.location.lat, archSite.location.lng, archSite.location.zoom))
+        else
+            view?.toast("Location of given site is not editable")
+   }
 
     fun doAddOrSave(title: String, description: String, visited: Boolean, dateVisited: String, favorite: Boolean, notes: String) {
         archSite.name = title
@@ -117,12 +121,16 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doDelete() {
-        doAsync {
-            app.archSites.delete(archSite)
-            uiThread {
-                view?.finish()
+        if(archSite.editable) {
+            doAsync {
+                app.archSites.delete(archSite)
+                uiThread {
+                    view?.finish()
+                }
             }
         }
+        else
+            view?.toast("A given site can not be deleted")
     }
 
     fun doAddImage() {

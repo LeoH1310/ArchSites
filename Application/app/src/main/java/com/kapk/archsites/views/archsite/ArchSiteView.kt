@@ -62,6 +62,10 @@ class ArchSiteView : BaseView(), AnkoLogger {
         btn_favorite.isChecked = archSite.favorite
         setImageSlider(archSite)
 
+        //Disable editing for ArchSitesSpecs
+        txt_ArchSite_Name.isFocusable = archSite.editable
+        txt_ArchSite_Description.isFocusable = archSite.editable
+
         var imageCounter = 0
         for (x in 0 until 4) {
             if (archSite.images[x] != "")
