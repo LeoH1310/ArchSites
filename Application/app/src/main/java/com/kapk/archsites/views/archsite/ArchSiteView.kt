@@ -55,6 +55,7 @@ class ArchSiteView : BaseView(), AnkoLogger {
         txt_dateVisited.text = archSite.dateVisited
         txt_ArchSite_Notes.setText(archSite.notes)
         btn_favorite.isChecked = archSite.favorite
+        ratingBar.rating = archSite.rating
         setImageSlider(archSite)
 
         //Disable editing for ArchSitesSpecs
@@ -87,7 +88,7 @@ class ArchSiteView : BaseView(), AnkoLogger {
                     toast(R.string.toast_enterName)
                 } else {
                     presenter.doAddOrSave(txt_ArchSite_Name.text.toString(), txt_ArchSite_Description.text.toString(), check_ArchSite_visited.isChecked,
-                        txt_dateVisited.text.toString(), btn_favorite.isChecked, txt_ArchSite_Notes.text.toString())
+                        txt_dateVisited.text.toString(), btn_favorite.isChecked, txt_ArchSite_Notes.text.toString(), ratingBar.rating)
                 }
             }
         }
@@ -103,7 +104,7 @@ class ArchSiteView : BaseView(), AnkoLogger {
         if (archSite.images[0] == ""){
             imageList.add(
                 SlideModel(
-                    R.drawable.add_new_image,false
+                    R.drawable.add_new_image,true
                 )
             )
         }

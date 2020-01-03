@@ -98,13 +98,14 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
             view?.toast("Location of given site is not editable")
    }
 
-    fun doAddOrSave(title: String, description: String, visited: Boolean, dateVisited: String, favorite: Boolean, notes: String) {
+    fun doAddOrSave(title: String, description: String, visited: Boolean, dateVisited: String, favorite: Boolean, notes: String, rating: Float) {
         archSite.name = title
         archSite.description = description
         archSite.visited = visited
         archSite.dateVisited = dateVisited
         archSite.favorite = favorite
         archSite.notes = notes
+        archSite.rating = rating
         doAsync {
             if (edit) {
                 app.archSites.update(archSite)

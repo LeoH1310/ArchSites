@@ -13,6 +13,7 @@
     <string name="text_ArchSiteDescription">Description</string>
     <string name="text_ArchSiteNotes">Notes</string>
     <string name="text_btn_AddImage">Add Image</string>
+    <string name="text_Favorite">Favorite</string>
     <string name="description_ArchSiteImage">ArchSite Image</string>
 
     <!-- Login -->

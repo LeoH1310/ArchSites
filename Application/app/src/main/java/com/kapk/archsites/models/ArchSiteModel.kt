@@ -17,6 +17,7 @@ data class ArchSiteModel(@PrimaryKey(autoGenerate = true) var id: Long = 0,
                          var favorite: Boolean = false,
                          var visited: Boolean = false,
                          var dateVisited: String = "Visited",
+                         var rating: Float = 0f,
                          var images: MutableList<String> = MutableList(4) { "" },
                          @Embedded var location : Location = Location()): Parcelable
 

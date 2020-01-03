@@ -51,6 +51,7 @@ class ArchSiteFireStore(private val context: Context) : ArchSiteStore, AnkoLogge
             foundArchSite.images = archSite.images
             foundArchSite.location = archSite.location
             foundArchSite.notes = archSite.notes
+            foundArchSite.rating = archSite.rating
         }
 
         db.child("users").child(userId).child("archSites").child(archSite.fbId).setValue(archSite)
