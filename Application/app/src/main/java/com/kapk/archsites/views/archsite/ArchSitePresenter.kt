@@ -136,12 +136,14 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doAddImage() {
+        locationService.removeLocationUpdates(locationCallback)
         view?.let {
             showImagePicker(view!!, ADD_IMAGE_REQUEST)
         }
     }
 
     fun doChangeImage(pos: Int) {
+        locationService.removeLocationUpdates(locationCallback)
         view?.let {
             showImagePicker(view!!, CHANGE_IMAGE_REQUEST + pos)
         }
@@ -169,8 +171,8 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
             }
             LOCATION_REQUEST -> {
                 val location = data.extras?.getParcelable<Location>("location")!!
-                locationService.removeLocationUpdates(locationCallback)
                 locManualChanged = true
+                locationService.removeLocationUpdates(locationCallback)
                 archSite.location = location
                 locationUpdate(location)
             }
