@@ -33,6 +33,9 @@
     <string name="title_EditLocation">Edit Location</string>
     <string name="text_lat_lng_default">00.000000</string>
 
+    <!-- Map -->
+    <string name="title_Map">All ArchSites Map</string>
+
     <!-- Menu -->
     <string name="text_menu_item_add">Add Custom Site</string>
     <string name="text_menu_item_map">Show Map</string>
