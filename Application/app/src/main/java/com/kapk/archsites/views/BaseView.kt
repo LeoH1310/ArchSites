@@ -10,6 +10,7 @@ import com.kapk.archsites.views.archsite.ArchSiteView
 import com.kapk.archsites.views.archsitelist.ArchSiteListView
 import com.kapk.archsites.views.editlocation.EditLocationView
 import com.kapk.archsites.views.login.LoginView
+import com.kapk.archsites.views.map.ArchSiteMapView
 import com.kapk.archsites.views.settings.SettingsView
 import org.jetbrains.anko.AnkoLogger
 
@@ -18,7 +19,7 @@ val LOCATION_REQUEST = 2
 val CHANGE_IMAGE_REQUEST = 3
 
 enum class VIEW {
-    LOCATION, ARCHSITE, LIST, LOGIN, SETTINGS
+    LOCATION, ARCHSITE, LIST, LOGIN, SETTINGS, MAPS
 }
 
 abstract class BaseView : AppCompatActivity(), AnkoLogger {
@@ -30,7 +31,7 @@ abstract class BaseView : AppCompatActivity(), AnkoLogger {
         when (view) {
             VIEW.LOCATION -> intent = Intent(this, EditLocationView::class.java)
             VIEW.ARCHSITE -> intent = Intent(this, ArchSiteView::class.java)
-            //VIEW.MAPS -> intent = Intent(this, PlacemarkMapView::class.java)
+            VIEW.MAPS -> intent = Intent(this, ArchSiteMapView::class.java)
             VIEW.LIST -> intent = Intent(this, ArchSiteListView::class.java)
             VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
             VIEW.SETTINGS -> intent = Intent(this, SettingsView::class.java)

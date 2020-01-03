@@ -32,7 +32,7 @@ class ArchSiteListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doShowMap() {
-    //   view?.navigateTo(VIEW.MAPS)
+       view?.navigateTo(VIEW.MAPS)
     }
 
     fun doLogout() {

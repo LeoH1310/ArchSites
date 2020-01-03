@@ -91,7 +91,7 @@ class ArchSiteView : BaseView(), AnkoLogger {
                 }
             }
         }
-        return super.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(item!!)
     }
 
     override fun setImageSlider(archSite: ArchSiteModel){
