@@ -103,7 +103,7 @@ class ArchSiteView : BaseView(), AnkoLogger {
         if (archSite.images[0] == ""){
             imageList.add(
                 SlideModel(
-                    R.drawable.add_new_image,true
+                    R.drawable.add_new_image,false
                 )
             )
         }
