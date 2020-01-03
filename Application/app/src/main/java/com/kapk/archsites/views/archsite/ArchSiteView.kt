@@ -41,10 +41,10 @@ class ArchSiteView : BaseView(), AnkoLogger {
         check_ArchSite_visited.setOnClickListener {
             if (check_ArchSite_visited.isChecked) {
                 val dateVisited = "Visited\n" + getDateInstance().format(Date())
-                txt_dateVisited.setText(dateVisited)
+                txt_dateVisited.text = dateVisited
             }
             else
-                txt_dateVisited.setText("Visited")
+                txt_dateVisited.text = R.string.text_ArchSiteVisited.toString()
         }
     }
 
@@ -52,9 +52,10 @@ class ArchSiteView : BaseView(), AnkoLogger {
         txt_ArchSite_Name.setText(archSite.name)
         txt_ArchSite_Description.setText(archSite.description)
         check_ArchSite_visited.isChecked = archSite.visited
-        txt_dateVisited.setText(archSite.dateVisited)
+        txt_dateVisited.text = archSite.dateVisited
         txt_ArchSite_Notes.setText(archSite.notes)
         btn_favorite.isChecked = archSite.favorite
+        ratingBar.rating = archSite.rating
         setImageSlider(archSite)
 
         //Disable editing for ArchSitesSpecs
@@ -87,11 +88,11 @@ class ArchSiteView : BaseView(), AnkoLogger {
                     toast(R.string.toast_enterName)
                 } else {
                     presenter.doAddOrSave(txt_ArchSite_Name.text.toString(), txt_ArchSite_Description.text.toString(), check_ArchSite_visited.isChecked,
-                        txt_dateVisited.text.toString(), btn_favorite.isChecked, txt_ArchSite_Notes.text.toString())
+                        txt_dateVisited.text.toString(), btn_favorite.isChecked, txt_ArchSite_Notes.text.toString(), ratingBar.rating)
                 }
             }
         }
-        return super.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(item!!)
     }
 
     override fun setImageSlider(archSite: ArchSiteModel){

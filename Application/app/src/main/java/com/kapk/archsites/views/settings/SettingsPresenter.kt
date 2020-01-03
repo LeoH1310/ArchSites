@@ -8,8 +8,8 @@ import org.jetbrains.anko.toast
 
 class SettingsPresenter(view: BaseView) : BasePresenter(view) {
 
-    var auth: FirebaseAuth = FirebaseAuth.getInstance()
-    var fireStore: ArchSiteFireStore? = null
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var fireStore: ArchSiteFireStore? = null
 
     init {
         if (app.archSites is ArchSiteFireStore) {
@@ -42,10 +42,12 @@ class SettingsPresenter(view: BaseView) : BasePresenter(view) {
     fun doCountVisitedSites():Int{
         val allSites = app.archSites.findAll()
         var counter = 0
-        for(x in 0 until allSites.size){
-            if(allSites[x].visited)
+
+        allSites.forEach{ item ->
+            if(item.visited)
                 counter++
         }
+
         return counter
     }
 

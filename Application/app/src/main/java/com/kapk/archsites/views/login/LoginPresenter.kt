@@ -14,9 +14,9 @@ import org.jetbrains.anko.toast
 
 class LoginPresenter(view: BaseView) : BasePresenter(view) {
 
-    var auth: FirebaseAuth = FirebaseAuth.getInstance()
-    val db = FirebaseFirestore.getInstance()
-    var fireStore: ArchSiteFireStore? = null
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
+    private var fireStore: ArchSiteFireStore? = null
 
     init {
         if (app.archSites is ArchSiteFireStore) {
@@ -63,14 +63,14 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
 
     }
 
-    fun loadSiteSpecs(){
+    private fun loadSiteSpecs(){
 
         db.collection("ArchSitesSpec")
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     for (document in task.result!!) {
-                        var archSiteSpec = ArchSiteModel()
+                        val archSiteSpec = ArchSiteModel()
                         archSiteSpec.name = document.getString("name").toString()
                         archSiteSpec.description = document.getString("description").toString()
                         archSiteSpec.images[0] = document.getString("image1").toString()
@@ -81,8 +81,8 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
                         archSiteSpec.location.lng = document.getDouble("locationLng")!!
                         archSiteSpec.editable = false
 
-                        var userId = FirebaseAuth.getInstance().currentUser!!.uid
-                        var udb = FirebaseDatabase.getInstance().reference
+                        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+                        val udb = FirebaseDatabase.getInstance().reference
 
                         val key = udb.child("users").child(userId).child("archSites").push().key
                         key?.let {

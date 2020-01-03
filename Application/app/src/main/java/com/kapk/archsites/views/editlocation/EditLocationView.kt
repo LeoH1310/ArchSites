@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_editlocation.*
 
 class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
-    lateinit var presenter: EditLocationPresenter
+    private lateinit var presenter: EditLocationPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,7 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
         super.init(toolbar, true)
         presenter = initPresenter(EditLocationPresenter(this)) as EditLocationPresenter
 
-        mapView.onCreate(savedInstanceState);
+        mapView.onCreate(savedInstanceState)
         mapView.getMapAsync {
             it.setOnMarkerDragListener(this)
             it.setOnMarkerClickListener(this)
@@ -39,14 +39,14 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
                 presenter.doSave()
             }
         }
-        return super.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(item!!)
     }
 
     override fun onMarkerDragStart(marker: Marker) {}
 
     override fun onMarkerDrag(marker: Marker) {
-        txt_lat.setText("%.6f".format(marker.position.latitude))
-        txt_lng.setText("%.6f".format(marker.position.longitude))
+        txt_lat.text = R.string.format_6.toString().format(marker.position.latitude)
+        txt_lng.text = R.string.format_6.toString().format(marker.position.longitude)
     }
 
     override fun onMarkerDragEnd(marker: Marker) {
@@ -84,7 +84,7 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
     }
 
     override fun showLocation(location : Location){
-        txt_lat.setText("%.6f".format(location.lat))
-        txt_lng.setText("%.6f".format(location.lng))
+        txt_lat.text = R.string.format_6.toString().format(location.lat)
+        txt_lng.text = R.string.format_6.toString().format(location.lng)
     }
 }

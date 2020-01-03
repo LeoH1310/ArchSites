@@ -13,15 +13,24 @@ import org.jetbrains.anko.AnkoLogger
 import java.io.ByteArrayOutputStream
 import java.io.File
 
-class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
+class ArchSiteFireStore(private val context: Context) : ArchSiteStore, AnkoLogger {
 
     var archSites = ArrayList<ArchSiteModel>()
-    lateinit var userId: String
-    lateinit var db: DatabaseReference
-    lateinit var st: StorageReference
+    private lateinit var userId: String
+    private lateinit var db: DatabaseReference
+    private lateinit var st: StorageReference
 
     override fun findAll(): List<ArchSiteModel> {
         return archSites
+    }
+
+    override fun findFav(): List<ArchSiteModel> {
+        val archSiteFav: ArrayList<ArchSiteModel> = ArrayList()
+        archSites.forEach {
+            if(it.favorite)
+                archSiteFav.add(it)
+        }
+        return archSiteFav
     }
 
     override fun findById(id: Long): ArchSiteModel? {
@@ -51,6 +60,7 @@ class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
             foundArchSite.images = archSite.images
             foundArchSite.location = archSite.location
             foundArchSite.notes = archSite.notes
+            foundArchSite.rating = archSite.rating
         }
 
         db.child("users").child(userId).child("archSites").child(archSite.fbId).setValue(archSite)
@@ -59,9 +69,9 @@ class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
 
     override fun delete(archSite: ArchSiteModel) {
 
-        archSite.images.forEach {
-            if (it != "") {
-                val imageRef = FirebaseStorage.getInstance().getReferenceFromUrl(it)
+        archSite.images.forEach { imageIt ->
+            if (imageIt != "") {
+                val imageRef = FirebaseStorage.getInstance().getReferenceFromUrl(imageIt)
                 imageRef.delete().addOnFailureListener {
                     println(it.message)
                 }
@@ -78,11 +88,11 @@ class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
     private fun updateImages(archSite: ArchSiteModel) {
 
         for (x in 0 until archSite.images.size) {
-            var curImageStr = archSite.images[x]
+            val curImageStr = archSite.images[x]
             val fileName = File(curImageStr)
-            val imageName = fileName.getName()
+            val imageName = fileName.name
 
-            var imageRef = st.child(userId + '/' + imageName)
+            val imageRef = st.child("$userId/$imageName")
             val baos = ByteArrayOutputStream()
             val bitmap = readImageFromPath(context, curImageStr)
 

@@ -9,7 +9,7 @@ import org.jetbrains.anko.toast
 
 class LoginView : BaseView() {
 
-    lateinit var presenter: LoginPresenter
+    private lateinit var presenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

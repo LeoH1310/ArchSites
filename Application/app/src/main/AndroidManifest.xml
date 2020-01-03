@@ -25,7 +25,8 @@
 
         <activity android:name=".views.login.LoginView"
             android:label="@string/title_Login"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:noHistory="true">
         </activity>
 
         <activity android:name=".views.archsitelist.ArchSiteListView"
@@ -53,6 +54,20 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.archsite.ArchSiteView" />
+        </activity>
+
+        <activity android:name=".views.map.ArchSiteMapView"
+            android:label="@string/title_Map">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.archsitelist.ArchSiteListView" />
+        </activity>
+
+        <activity android:name=".views.archsitelist.ArchSiteFavoriteView"
+            android:label="@string/title_ArchSiteFav">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.archsitelist.ArchSiteListView" />
         </activity>
 
         <meta-data
