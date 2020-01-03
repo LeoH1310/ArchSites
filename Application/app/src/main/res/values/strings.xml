@@ -17,6 +17,9 @@
 
     <!-- Login -->
     <string name="title_Login">Login</string>
+    <string name="text_Email">Email</string>
+    <string name="text_SignUp">Sign Up</string>
+    <string name="text_LogIn">Login</string>
 
     <!-- Settings -->
     <string name="title_Settings">Settings</string>
@@ -32,6 +35,7 @@
     <!-- Edit Location -->
     <string name="title_EditLocation">Edit Location</string>
     <string name="text_lat_lng_default">00.000000</string>
+    <string name="format_6">%.6f</string>
 
     <!-- Map -->
     <string name="title_Map">All ArchSites Map</string>

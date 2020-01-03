@@ -100,7 +100,8 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_addImage" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_addImage"
+                tools:ignore="Autofill" />
 
             <Switch
                 android:id="@+id/check_ArchSite_visited"
@@ -126,7 +127,9 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_ArchSite_Name" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_ArchSite_Name"
+                tools:ignore="Autofill"
+                android:importantForAutofill="no" />
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"
@@ -170,7 +173,9 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_ArchSite_Description" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_ArchSite_Description"
+                tools:ignore="Autofill"
+                android:importantForAutofill="no" />
 
             <ToggleButton
                 android:id="@+id/btn_favorite"

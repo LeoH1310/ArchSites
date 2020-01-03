@@ -12,17 +12,17 @@ import kotlinx.android.synthetic.main.content_archsite_map.*
 
 class ArchSiteMapView : BaseView(), GoogleMap.OnMarkerClickListener {
 
-    lateinit var presenter: ArchSiteMapPresenter
-    lateinit var map : GoogleMap
+    private lateinit var presenter: ArchSiteMapPresenter
+    private lateinit var map : GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_archsite_map)
-        super.init(toolbar, true);
+        super.init(toolbar, true)
 
         presenter = initPresenter (ArchSiteMapPresenter(this)) as ArchSiteMapPresenter
 
-        mapView.onCreate(savedInstanceState);
+        mapView.onCreate(savedInstanceState)
         mapView.getMapAsync {
             map = it
             map.setOnMarkerClickListener(this)
@@ -31,8 +31,9 @@ class ArchSiteMapView : BaseView(), GoogleMap.OnMarkerClickListener {
     }
 
     override fun showArchSite(archSite: ArchSiteModel) {
+        val locationText = "Lat: " + "%.6f".format(archSite.location.lat) + " Lng: " + "%.6f".format(archSite.location.lng)
         txt_archsite_name.text = archSite.name
-        txt_archsite_location.text = "Lat: " + "%.6f".format(archSite.location.lat) + " Lng: " + "%.6f".format(archSite.location.lng)
+        txt_archsite_location.text = locationText
         Glide.with(this).load(archSite.images[0]).into(img_archsite)
     }
 

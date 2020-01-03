@@ -2,8 +2,6 @@ package com.kapk.archsites.views.archsitelist
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kapk.archsites.R
 import com.kapk.archsites.models.ArchSiteModel

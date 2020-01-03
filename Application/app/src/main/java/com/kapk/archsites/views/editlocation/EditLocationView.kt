@@ -45,8 +45,8 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
     override fun onMarkerDragStart(marker: Marker) {}
 
     override fun onMarkerDrag(marker: Marker) {
-        txt_lat.text = "%.6f".format(marker.position.latitude)
-        txt_lng.text = "%.6f".format(marker.position.longitude)
+        txt_lat.text = R.string.format_6.toString().format(marker.position.latitude)
+        txt_lng.text = R.string.format_6.toString().format(marker.position.longitude)
     }
 
     override fun onMarkerDragEnd(marker: Marker) {
@@ -84,7 +84,7 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
     }
 
     override fun showLocation(location : Location){
-        txt_lat.text = "%.6f".format(location.lat)
-        txt_lng.text = "%.6f".format(location.lng)
+        txt_lat.text = R.string.format_6.toString().format(location.lat)
+        txt_lng.text = R.string.format_6.toString().format(location.lng)
     }
 }

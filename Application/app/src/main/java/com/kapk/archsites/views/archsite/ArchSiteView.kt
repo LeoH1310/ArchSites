@@ -44,7 +44,7 @@ class ArchSiteView : BaseView(), AnkoLogger {
                 txt_dateVisited.text = dateVisited
             }
             else
-                txt_dateVisited.text = "Visited"
+                txt_dateVisited.text = R.string.text_ArchSiteVisited.toString()
         }
     }
 
