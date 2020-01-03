@@ -8,6 +8,9 @@
         android:id="@+id/menu_item_map"
         android:title="@string/text_menu_item_map" />
     <item
+        android:id="@+id/menu_item_fav"
+        android:title="@string/title_ArchSiteFav" />
+    <item
         android:id="@+id/menu_item_settings"
         android:title="@string/text_menu_item_settings" />
     <item

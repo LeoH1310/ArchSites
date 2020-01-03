@@ -1,4 +1,4 @@
-package com.kapk.archsites.views.archsite
+package com.kapk.archsites.views.archsitelist
 
 import android.view.LayoutInflater
 import android.view.View

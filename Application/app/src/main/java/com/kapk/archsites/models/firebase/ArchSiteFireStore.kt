@@ -24,6 +24,15 @@ class ArchSiteFireStore(private val context: Context) : ArchSiteStore, AnkoLogge
         return archSites
     }
 
+    override fun findFav(): List<ArchSiteModel> {
+        val archSiteFav: ArrayList<ArchSiteModel> = ArrayList()
+        archSites.forEach {
+            if(it.favorite)
+                archSiteFav.add(it)
+        }
+        return archSiteFav
+    }
+
     override fun findById(id: Long): ArchSiteModel? {
         return archSites.find { p -> p.id == id }
     }

@@ -10,9 +10,12 @@ import org.jetbrains.anko.uiThread
 
 class ArchSiteListPresenter(view: BaseView) : BasePresenter(view) {
 
-    fun loadArchSites() {
+    fun loadArchSites(onlyFavorites: Boolean) {
         doAsync {
-            val archSites = app.archSites.findAll()
+            val archSites = if (onlyFavorites)
+                app.archSites.findFav()
+            else
+                app.archSites.findAll()
             uiThread {
                 view?.showArchSites(archSites)
             }
@@ -39,5 +42,9 @@ class ArchSiteListPresenter(view: BaseView) : BasePresenter(view) {
         FirebaseAuth.getInstance().signOut()
         app.archSites.clear()
         view?.navigateTo(VIEW.LOGIN)
+    }
+
+    fun doShowFavorites(){
+        view?.navigateTo(VIEW.FAVORITES)
     }
 }

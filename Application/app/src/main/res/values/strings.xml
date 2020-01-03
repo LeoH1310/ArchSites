@@ -2,11 +2,10 @@
     <!-- General -->
     <string name="app_name">ArchSites</string>
 
-    <!-- SplashScreen -->
-
     <!-- ArchSiteList & ArchSite -->
     <string name="title_ArchSite">ArchSite</string>
     <string name="title_ArchSiteList">ArchSites</string>
+    <string name="title_ArchSiteFav">Favorites</string>
     <string name="text_ArchSiteName">Name</string>
     <string name="text_ArchSiteLocation">Location</string>
     <string name="text_ArchSiteVisited">Visited</string>
@@ -47,6 +46,7 @@
 
     <!-- Toasts -->
     <string name="toast_enterName">Please enter a Name</string>
+    <string name="toast_noFavorites">No favorites selected.</string>
 
     <!-- Image -->
     <string name="text_select_image">Select ArchSite Image</string>
