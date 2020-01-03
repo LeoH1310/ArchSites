@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconDuplicates">
+        <ignore path="src/main/res/mipmap-hdpi/ic_archsiteicon_background.png" />
+        <ignore path="src/main/res/mipmap-hdpi/ic_archsiteicon_foreground.png" />
+        <ignore path="src/main/res/mipmap-mdpi/ic_archsiteicon_background.png" />
+        <ignore path="src/main/res/mipmap-mdpi/ic_archsiteicon_foreground.png" />
+        <ignore path="src/main/res/mipmap-xhdpi/ic_archsiteicon_background.png" />
+        <ignore path="src/main/res/mipmap-xhdpi/ic_archsiteicon_foreground.png" />
+        <ignore path="src/main/res/mipmap-xxhdpi/ic_archsiteicon_background.png" />
+        <ignore path="src/main/res/mipmap-xxhdpi/ic_archsiteicon_foreground.png" />
+        <ignore path="src/main/res/mipmap-xxxhdpi/ic_archsiteicon_background.png" />
+        <ignore path="src/main/res/mipmap-xxxhdpi/ic_archsiteicon_foreground.png" />
+    </issue>
+    <issue id="IconLocation">
+        <ignore path="src/main/res/drawable/add_new_image.png" />
+    </issue>
+</lint>
