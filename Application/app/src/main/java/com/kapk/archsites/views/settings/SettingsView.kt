@@ -3,15 +3,14 @@ package com.kapk.archsites.views.settings
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import com.kapk.archsites.R
-import com.kapk.archsites.main.MainApp
 import com.kapk.archsites.views.BaseView
 import kotlinx.android.synthetic.main.activity_settings.*
 import org.jetbrains.anko.toast
 
 class SettingsView : BaseView() {
 
-    lateinit var presenter: SettingsPresenter
-    var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private lateinit var presenter: SettingsPresenter
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +39,8 @@ class SettingsView : BaseView() {
         }
 
         txt_user_email.setText(auth.currentUser!!.email)
-        txt_sitesCounter.setText(presenter.doCountSites().toString())
-        txt_sitesVisitedCounter.setText(presenter.doCountVisitedSites().toString())
+        txt_sitesCounter.text = presenter.doCountSites().toString()
+        txt_sitesVisitedCounter.text = presenter.doCountVisitedSites().toString()
     }
 
 }

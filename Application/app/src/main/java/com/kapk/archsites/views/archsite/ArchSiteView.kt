@@ -41,10 +41,10 @@ class ArchSiteView : BaseView(), AnkoLogger {
         check_ArchSite_visited.setOnClickListener {
             if (check_ArchSite_visited.isChecked) {
                 val dateVisited = "Visited\n" + getDateInstance().format(Date())
-                txt_dateVisited.setText(dateVisited)
+                txt_dateVisited.text = dateVisited
             }
             else
-                txt_dateVisited.setText("Visited")
+                txt_dateVisited.text = "Visited"
         }
     }
 
@@ -52,7 +52,7 @@ class ArchSiteView : BaseView(), AnkoLogger {
         txt_ArchSite_Name.setText(archSite.name)
         txt_ArchSite_Description.setText(archSite.description)
         check_ArchSite_visited.isChecked = archSite.visited
-        txt_dateVisited.setText(archSite.dateVisited)
+        txt_dateVisited.text = archSite.dateVisited
         txt_ArchSite_Notes.setText(archSite.notes)
         btn_favorite.isChecked = archSite.favorite
         setImageSlider(archSite)
@@ -91,7 +91,7 @@ class ArchSiteView : BaseView(), AnkoLogger {
                 }
             }
         }
-        return super.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(item!!)
     }
 
     override fun setImageSlider(archSite: ArchSiteModel){

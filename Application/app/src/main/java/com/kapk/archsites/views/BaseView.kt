@@ -13,9 +13,9 @@ import com.kapk.archsites.views.login.LoginView
 import com.kapk.archsites.views.settings.SettingsView
 import org.jetbrains.anko.AnkoLogger
 
-val ADD_IMAGE_REQUEST = 1
-val LOCATION_REQUEST = 2
-val CHANGE_IMAGE_REQUEST = 3
+const val ADD_IMAGE_REQUEST = 1
+const val LOCATION_REQUEST = 2
+const val CHANGE_IMAGE_REQUEST = 3
 
 enum class VIEW {
     LOCATION, ARCHSITE, LIST, LOGIN, SETTINGS
@@ -23,7 +23,7 @@ enum class VIEW {
 
 abstract class BaseView : AppCompatActivity(), AnkoLogger {
 
-    var basePresenter: BasePresenter? = null
+    private var basePresenter: BasePresenter? = null
 
     fun navigateTo(view: VIEW, code: Int = 0, key: String = "", value: Parcelable? = null) {
         var intent = Intent(this, ArchSiteListView::class.java)

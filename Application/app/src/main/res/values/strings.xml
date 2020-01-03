@@ -3,8 +3,7 @@
     <string name="app_name">ArchSites</string>
 
     <!-- SplashScreen -->
-    <string name="description_Logo">ArchSites Logo</string>
-    
+
     <!-- ArchSiteList & ArchSite -->
     <string name="title_ArchSite">ArchSite</string>
     <string name="title_ArchSiteList">ArchSites</string>
@@ -15,7 +14,6 @@
     <string name="text_ArchSiteNotes">Notes</string>
     <string name="text_btn_AddImage">Add Image</string>
     <string name="description_ArchSiteImage">ArchSite Image</string>
-    <string name="toast_max_images">Only 4 images possible</string>
 
     <!-- Login -->
     <string name="title_Login">Login</string>

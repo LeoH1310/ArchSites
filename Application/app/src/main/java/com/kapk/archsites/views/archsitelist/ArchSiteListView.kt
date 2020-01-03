@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.denzcoskun.imageslider.ImageSlider
-import com.denzcoskun.imageslider.models.SlideModel
 import com.kapk.archsites.R
 import com.kapk.archsites.models.ArchSiteModel
 import com.kapk.archsites.views.BaseView
@@ -16,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_archsite_list.*
 
 class ArchSiteListView : BaseView(), ArchSiteListener {
 
-    lateinit var presenter: ArchSiteListPresenter
+    private lateinit var presenter: ArchSiteListPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +50,7 @@ class ArchSiteListView : BaseView(), ArchSiteListener {
             R.id.menu_item_settings ->presenter.doShowSettings()
             R.id.menu_item_logout ->presenter.doLogout()
         }
-        return super.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(item!!)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

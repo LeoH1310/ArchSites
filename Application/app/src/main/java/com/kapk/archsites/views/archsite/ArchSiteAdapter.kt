@@ -41,7 +41,7 @@ class ArchSiteAdapter constructor(private var archSites: List<ArchSiteModel>,
             itemView.check_visited.isChecked = archSite.visited
             val locationText = "Lat: " + "%.6f".format(archSite.location.lat) + " Lng: " + "%.6f".format(archSite.location.lng)
             itemView.txt_siteLocation.text = locationText
-            Glide.with(itemView.context).load(archSite.images[0]).into(itemView.siteImage);
+            Glide.with(itemView.context).load(archSite.images[0]).into(itemView.siteImage)
             itemView.setOnClickListener { listener.onArchSiteClick(archSite) }
         }
     }

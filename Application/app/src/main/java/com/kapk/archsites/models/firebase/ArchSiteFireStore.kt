@@ -13,12 +13,12 @@ import org.jetbrains.anko.AnkoLogger
 import java.io.ByteArrayOutputStream
 import java.io.File
 
-class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
+class ArchSiteFireStore(private val context: Context) : ArchSiteStore, AnkoLogger {
 
     var archSites = ArrayList<ArchSiteModel>()
-    lateinit var userId: String
-    lateinit var db: DatabaseReference
-    lateinit var st: StorageReference
+    private lateinit var userId: String
+    private lateinit var db: DatabaseReference
+    private lateinit var st: StorageReference
 
     override fun findAll(): List<ArchSiteModel> {
         return archSites
@@ -59,9 +59,9 @@ class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
 
     override fun delete(archSite: ArchSiteModel) {
 
-        archSite.images.forEach {
-            if (it != "") {
-                val imageRef = FirebaseStorage.getInstance().getReferenceFromUrl(it)
+        archSite.images.forEach { imageIt ->
+            if (imageIt != "") {
+                val imageRef = FirebaseStorage.getInstance().getReferenceFromUrl(imageIt)
                 imageRef.delete().addOnFailureListener {
                     println(it.message)
                 }
@@ -78,11 +78,11 @@ class ArchSiteFireStore(val context: Context) : ArchSiteStore, AnkoLogger {
     private fun updateImages(archSite: ArchSiteModel) {
 
         for (x in 0 until archSite.images.size) {
-            var curImageStr = archSite.images[x]
+            val curImageStr = archSite.images[x]
             val fileName = File(curImageStr)
-            val imageName = fileName.getName()
+            val imageName = fileName.name
 
-            var imageRef = st.child(userId + '/' + imageName)
+            val imageRef = st.child("$userId/$imageName")
             val baos = ByteArrayOutputStream()
             val bitmap = readImageFromPath(context, curImageStr)
 

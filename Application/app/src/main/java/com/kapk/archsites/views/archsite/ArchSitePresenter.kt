@@ -23,21 +23,21 @@ import org.jetbrains.anko.uiThread
 
 class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
 
-    var archSite = ArchSiteModel()
-    var edit = false
-    var locManualChanged = false
+    private var archSite = ArchSiteModel()
+    private var edit = false
+    private var locManualChanged = false
 
-    var map: GoogleMap? = null
-    var defaultLocation = Location(52.245696, -7.139102, 15f)
-    var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
-    val locationRequest = createDefaultLocationRequest()
+    private var map: GoogleMap? = null
+    private var defaultLocation = Location(52.245696, -7.139102, 15f)
+    private var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
+    private val locationRequest = createDefaultLocationRequest()
 
-    lateinit var locationCallback: LocationCallback
+    private lateinit var locationCallback: LocationCallback
 
     init {
         if (view.intent.hasExtra("archSite_edit")) {
             edit = true
-            archSite = view.intent.extras?.getParcelable<ArchSiteModel>("archSite_edit")!!
+            archSite = view.intent.extras?.getParcelable("archSite_edit")!!
             view.showArchSite(archSite)
         } else {
             if (checkLocationPermissions(view))
@@ -57,7 +57,7 @@ class ArchSitePresenter(view: BaseView) : BasePresenter(view) {
     fun doRestartLocationUpdate() {
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
-                if (locationResult != null && locationResult.locations != null) {
+                if (locationResult != null) {
                     val l = locationResult.locations.last()
                     locationUpdate(Location(l.latitude, l.longitude))
                 }
