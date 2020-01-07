@@ -59,7 +59,5 @@
     <string name="txt_btn_cancel">Cancel</string>
 
     <!-- TESTING -->
-    <string name="txt_email">leohesse@hero.com</string>
-    <string name="txt_password">123456</string>
     <string name="google_maps_key">AIzaSyApSayw54m4RSHyiW0FK33AGOG7vmX7nUs</string>
 </resources>
